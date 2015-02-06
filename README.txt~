@@ -1,0 +1,20 @@
+Bitwise.java:
+Implemented by using bitmasks and bit operations.
+
+MyFileSystem.java:
+Get direct & single/double/triple indirect blocks is implemented in this file.
+
+In this case, where the indirect block holds 128 entries. For each level of indirection, the max number of blocks can be managed are:
+Direct: 9;
+Single indirect: 9 + 128;
+Double indirect: 9 + 128 + 128^2;
+Triple indirect: 9 + 128 + 128^2 + 128^3;
+
+MyFileSystem.java:
+
+getDirectBlock():
+
+Direct scenario has been preimplemented.
+
+Indirect scenario:
+To get the block of each indirect level, try to read from the first level of indirection block. If not exist, create the block and write to disk. Then read the next level of indirection, repeat same actions. Finally, find the target block number an empty block(if exist), then return the block.
